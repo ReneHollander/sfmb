@@ -94,3 +94,10 @@ task startDevServer(dependsOn: copyPlugin, type: JavaExec) {
     "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
   ].toList()
 }
+
+task createFinalJar(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer']) {
+  copy {
+    from "${buildDir}/libs"
+    into 'final/'
+  }
+}
