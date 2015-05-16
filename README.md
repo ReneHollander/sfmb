@@ -57,12 +57,27 @@ Solltest du das Plugin verwenden und Videos darüber machen, musst du mit einem 
 Vorraussetzungen für Eclipse:  
 - Maven Plugin
 
-Das Projekt wurde soweit es geht mit Maven automatisiert. Damit du aber die richtigen Dependencies in deinem lokalen Maven Repository hast musst du das BuildTool von SpigotMC ausführen. Nähere Informationen dafür unter:  
+Das Projekt wurde soweit es geht mit Gradle automatisiert. Damit du aber die richtigen Dependencies in deinem lokalen Maven Repository hast musst du das BuildTool von SpigotMC ausführen. Nähere Informationen dafür unter:  
 [Bukkit, CraftBukkit & Spigot 1.8 - Server Instructions](http://www.spigotmc.org/threads/bukkit-craftbukkit-spigot-1-8.36598/).  
 Sobald das BuildTool fertig ist wurden die Dependencies für Bukkit und Craftbukkit installiert.
 Nun kannst du das Repo klonen und zum arbeiten Anfangen.
 
-Wenn du das Plugin testen möchtest musst du folgende Run Configuration ausführen: `Build YT-Battle Plugin`. Das Plugin wird kompiliert und ein Test Server eingerichtet. Wenn du im Root Verzeichnis des Projekts in den Ordner `bukkit` navigierst, kannst du in der Konsole für Windows start.bat und Linux start.sh ausführen und dein Test Server läuft.
+Zum Entwickeln kann entweder Eclipse oder IntelliJ IDEA verwendet werden. IDEA sollte aber bevorzugt werden!
+
+### Setup für IntelliJ
+- Workspace erzeugen
+	- Windows: CMD "gradlew.bat idea"
+	- Linux/OSX: Terminal "./gradlew idea"
+- Projekt in IntelliJ öffnen
+- Arbeiten!
+
+Es sind folgende Run Configurations vorhanden:
+- Build Plugin: Erzeugt Plugin Jar und platziert es im lokalen Test Server
+- Start Dev Server: Startet einen lokalen Bukkit Server zum testen
+- Debug Plugin: Der IntelliJ Debugger verbindet sich zum Server. Breakpoint können gesetzt werden, Code HotSwap verfügbar
+
+### Setup für Eclipse
+TODO
 
 ##Mitwirken
 ####Pull Requests
