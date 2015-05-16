@@ -1,11 +1,11 @@
 Willkommen beim offiziellen YouTube-Battle Plugin
 -------------------------------------------------
 
-###Download
+### Download
 **Latest Build**: [YT-Battle 2.0.0 for CB-1.8-R0.1-SNAPSHOT | 2015-01-11T13:36:16+01:00](http://files.rene8888.at/yt-battle/yt-battle-2.0.0-CB-1.8-R0.1-SNAPSHOT.zip)  
-##Informationen
+## Informationen
 
-###Autoren
+### Autoren
 * EXSolo:
 	- Website: [exsoloscript.com](http://exsoloscript.com/)
 	- YouTube: [EXSoloScript](https://www.youtube.com/user/EXSoloScript)
@@ -17,8 +17,8 @@ Willkommen beim offiziellen YouTube-Battle Plugin
 	- Skype: simpsons_fan2
 	- Twitter: [Rene8004](https://twitter.com/Rene8004)
 
-###Den Server konfigurieren
-####Installation:
+### Den Server konfigurieren
+#### Installation:
 Verwendet wird Craftbukkit Version `1.8-R0.1-SNAPSHOT`. Nähere Informationen wie du Bukkit 1.8 bekommst findest du hier: [Bukkit, CraftBukkit & Spigot 1.8 - Server Instructions](http://www.spigotmc.org/threads/bukkit-craftbukkit-spigot-1-8.36598/). Das Plugin muss mitsamt dem `lib` Ordner in den `plugins` Ordner verschoben werden. Am sichersten ist es, wenn vorher alle anderen Plugins wie Permission System, World Edit, Essentials usw entfernt werden. Sonst kann es zu Problemen kommen!  
 Dann kann schon der Server gestartet werden. Die Konfiguration erfolgt nun INGAME:
 
@@ -27,10 +27,10 @@ Dann kann schon der Server gestartet werden. Die Konfiguration erfolgt nun INGAM
 3. Damit jeder Spieler im Richtigen Team ist, muss jeder Spieler folgendes Kommando ausführen: `/battle join <farbe>`. Folgende Team Farben sind verfügbar: `white, yellow, green, cyan, purple, blue, red, black`
 4. Sind alle Spieler in den Richtigen Teams, so kann das Spiel mit `/battle start` gestartet werden. Ab jetzt läuft das Spiel.
 
-####Befehle im Spielverlauf
+#### Befehle im Spielverlauf
 Um eine neue Wolle zu erhalten, wird das Kommando `/battle life` verwendet.
 
-###Die Offiziellen Regeln nach [Rathamoon](https://www.youtube.com/user/RathamoonLP)
+### Die Offiziellen Regeln nach [Rathamoon](https://www.youtube.com/user/RathamoonLP)
 1. Nether ist aus!
 2. Friedensphase und After-Kill-Schutzzeit:
 	1. Die Friedenphase beträgt 30 Minuten und wird durch das Plugin realisiert (keinem ist es erlaubt in dieser Phase aggressive Handlungen gegenüber anderen Teams zu begehen. (z.B. kein Angreifen, keine Kisten öffnen ect.)
@@ -49,20 +49,12 @@ Um eine neue Wolle zu erhalten, wird das Kommando `/battle life` verwendet.
 	1. Die Welt wird durch eine Badrock-Wand begrenzt. Der Radius variiert je nach Teilnehmer Anzahl zwischen 350 und 550 Blöcken.
 	2. Sollten Lücken im Bedrock Rand durch irgendwelche Umstände entstehen, so ist es dem Spieler nicht erlaubt durch diese Lücken irgendwelche Handlungen zu vollziehen. (z.B. kein Durchgehen, kein Abbauen auf der andern Seite, keine Tiere rüberlocken ect.)
 
-##Regeln zur Nutzung
+## Regeln zur Nutzung
 Solltest du das Plugin verwenden und Videos darüber machen, musst du mit einem Direktlink in der Beschreibung oder dergleichen auf diese Seite (`https://github.com/Rene8888/yt-battle`) oder auf den verkürzten Link (`http://bit.ly/battleplugin`) verweisen. Das muss jeder tun der Mitspielt! Änderungen am Code (wie in der Lizenz beschrieben) müssen Öffentlich zugänglich sein. Außerdem sollst du Änderungen nicht verkaufen oder irgendwie anders daran Geld verdienen. Monetarisierung der Videos ist okay, aber das Plugin darf nicht verkauft werden!
 
 ## Arbeitsumgebung aufsetzen
-
-Vorraussetzungen für Eclipse:  
-- Maven Plugin
-
 Das Projekt wurde soweit es geht mit Gradle automatisiert. Damit du aber die richtigen Dependencies in deinem lokalen Maven Repository hast musst du das BuildTool von SpigotMC ausführen. Nähere Informationen dafür unter:  
 [Bukkit, CraftBukkit & Spigot 1.8 - Server Instructions](http://www.spigotmc.org/threads/bukkit-craftbukkit-spigot-1-8.36598/).  
-Sobald das BuildTool fertig ist wurden die Dependencies für Bukkit und Craftbukkit installiert.
-Nun kannst du das Repo klonen und zum arbeiten Anfangen.
-
-Zum Entwickeln kann entweder Eclipse oder IntelliJ IDEA verwendet werden. IDEA sollte aber bevorzugt werden!
 
 ### Setup für IntelliJ
 - Workspace erzeugen
