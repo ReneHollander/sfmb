@@ -18,6 +18,17 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'idea-utils'
 
+idea {
+  project {
+    ipr {
+      withXml { xmlProvider ->
+        def project = xmlProvider.asNode()
+        def runConfigs = new XmlParser().parse(new File("config/intellij_runconfigs.txt"))
+        project.append(runConfigs)
+      }
+    }
+  }
+}
 
 repositories {
   mavenLocal()
