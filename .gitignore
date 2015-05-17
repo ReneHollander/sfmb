@@ -1,4 +1,16 @@
+# maven
 target/
-bukkit/
 final/
+
+# eclipse
 .settings/
+.classpath
+.project
+
+# IDEA
+.idea
+yt-battle.iml
+
+# other
+
+bukkit/
