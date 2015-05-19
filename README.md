@@ -2,7 +2,7 @@ Willkommen beim offiziellen YouTube-Battle Plugin
 -------------------------------------------------
 
 ### Download
-**Latest Build**: [YT-Battle 2.0.0 for CB-1.8-R0.1-SNAPSHOT | 2015-01-11T13:36:16+01:00](http://files.rene8888.at/yt-battle/yt-battle-2.0.0-CB-1.8-R0.1-SNAPSHOT.zip)  
+**Latest Build**: None Yet
 ## Informationen
 
 ### Autoren
@@ -19,8 +19,8 @@ Willkommen beim offiziellen YouTube-Battle Plugin
 
 ### Den Server konfigurieren
 #### Installation:
-Verwendet wird Craftbukkit Version `1.8-R0.1-SNAPSHOT`. Nähere Informationen wie du Bukkit 1.8 bekommst findest du hier: [Bukkit, CraftBukkit & Spigot 1.8 - Server Instructions](http://www.spigotmc.org/threads/bukkit-craftbukkit-spigot-1-8.36598/). Das Plugin muss mitsamt dem `lib` Ordner in den `plugins` Ordner verschoben werden. Am sichersten ist es, wenn vorher alle anderen Plugins wie Permission System, World Edit, Essentials usw entfernt werden. Sonst kann es zu Problemen kommen!  
-Dann kann schon der Server gestartet werden. Die Konfiguration erfolgt nun INGAME:
+Verwendet wird Craftbukkit Version `1.8.4-R0.1-SNAPSHOT`. Nähere Informationen wie du Bukkit 1.8 bekommst findest du hier: [Bukkit, CraftBukkit & Spigot 1.8 - Server Instructions](http://www.spigotmc.org/threads/bukkit-craftbukkit-spigot-1-8.36598/). Das Plugin wird wie jedes andere Plugin installiert. Am sichersten ist es, wenn vorher alle anderen Plugins wie Permission System, World Edit, Essentials usw entfernt werden, denn onst kann es zu Problemen kommen!  
+Dann kann der Server schon gestartet werden. Die Konfiguration erfolgt nun INGAME:
 
 1. Zuerst muss der Spawn Punkt mit dem Kommando `/battle spawn` gesetzt werden.
 2. Durch einen Fehler in der momentanen Version von WorldEdit, können wir den Border nicht automatisch generieren. Als Border Material wird Bedrock empfohlen.
@@ -28,45 +28,28 @@ Dann kann schon der Server gestartet werden. Die Konfiguration erfolgt nun INGAM
 4. Sind alle Spieler in den Richtigen Teams, so kann das Spiel mit `/battle start` gestartet werden. Ab jetzt läuft das Spiel.
 
 #### Befehle im Spielverlauf
-Um eine neue Wolle zu erhalten, wird das Kommando `/battle life` verwendet.
+Um eine neue Wolle zu erhalten, wird das Kommando `/battle life` verwendet. Mit dem Befehl `/battle pause` kann das Spiel angehalten werden. Alle Timer (Wolle platzieren, Invincibility, ...) werden pausiert. Nun kann der Server auch gestoppt werden um das Spiel zu einem beliebigen Zeitpunkt wieder weiter zu führen. Dafür wird das Kommando  `/battle resume` verwendet. Nach einem 5 Sekunden Countdown werden alle Timer wieder gestartet und das Spiel läuft weiter. Achtung! Wenn das Spiel pausiert ist kann man sich frei bewegen! Auch Inventar, Leben und Hunger speichern wir nicht!
 
-### Die Offiziellen Regeln nach [Rathamoon](https://www.youtube.com/user/RathamoonLP)
-1. Nether ist aus!
-2. Friedensphase und After-Kill-Schutzzeit:
-	1. Die Friedenphase beträgt 30 Minuten und wird durch das Plugin realisiert (keinem ist es erlaubt in dieser Phase aggressive Handlungen gegenüber anderen Teams zu begehen. (z.B. kein Angreifen, keine Kisten öffnen ect.)
-	2. Die After-Kill-Schutzzeit beträgt 15 Minuten. In dieser Zeit kann der unter Schutzstehende nicht angegriffen werden. ein Plündern seiner Kisten ist allerdings erlaubt. Es gilt, wenn man einen Spieler Schaden zufügen kann, ist die Schutzzeit abgelaufen. Sollte allerdings die Schutzzeit noch nicht abgelaufen sein, muss dieses der betroffene Spieler der Leitung melden. Hier wird im Einzelfall durch die am Kampf nicht beteiligte Leitung entschieden. Sollte die gesamte Leitung am Kampf beteiligt gewesen sein, zählt das Plugin, auch wenn es fehlerhaft sein sollte.
-	3. Die Schutzzeit erlischt bei einer aggressiven Handlung gegebenüber anderen Teams. (Wolle abbauen, Angreifen)
-	4. Ein Run auf seine gedroppten Items ist erlaubt und führt nicht zur Beendung der Schutzzeit.
-3. Wollblöcke als Leben. (überwiegend durch Plugin gehandhabt)
-	1. Jedes Team bekommt zum Start 10 Leben in Form von Wollblöcken
-	2. Jeder Spieler muss 1 Wollblock im Inventar haben und nach der Friedensphase 1 Wollblock in der Welt platziert haben.
-	3. Das platzieren der Wolle in der Welt wird durch das Plugin gesteuert. folgendes gilt aber in jedem Fall:
-	4. Der Wollblock muss in alle Richtungen 2 Blöcke Abstand frei haben und darf auch nicht nachträglich zugebaut werden.  
-	5. Der Wollblock muss über der Erde platziert werden. (Nicht in Höhlen, nicht in Schluchten, nicht Unterwasser ect.)
-	6. Die Wolle darf nicht weiter als 3 Blöcke vom Boden entfernt sein, wobei als Boden das gilt, was die Mehrheit als solchen ansieht! (Also nicht im fliegendem Luftschloss und auch nicht auf den einen Erdblock der durch den Mapgenerator fliegend irgendwo platziert wurde)
-	7. Eigene Wolle darf nicht abgebaut werden
-4. Weltgröße:
-	1. Die Welt wird durch eine Badrock-Wand begrenzt. Der Radius variiert je nach Teilnehmer Anzahl zwischen 350 und 550 Blöcken.
-	2. Sollten Lücken im Bedrock Rand durch irgendwelche Umstände entstehen, so ist es dem Spieler nicht erlaubt durch diese Lücken irgendwelche Handlungen zu vollziehen. (z.B. kein Durchgehen, kein Abbauen auf der andern Seite, keine Tiere rüberlocken ect.)
+## Spielregeln
+TODO
 
 ## Regeln zur Nutzung
-Solltest du das Plugin verwenden und Videos darüber machen, musst du mit einem Direktlink in der Beschreibung oder dergleichen auf diese Seite (`https://github.com/Rene8888/yt-battle`) oder auf den verkürzten Link (`http://bit.ly/battleplugin`) verweisen. Das muss jeder tun der Mitspielt! Änderungen am Code (wie in der Lizenz beschrieben) müssen Öffentlich zugänglich sein. Außerdem sollst du Änderungen nicht verkaufen oder irgendwie anders daran Geld verdienen. Monetarisierung der Videos ist okay, aber das Plugin darf nicht verkauft werden!
+Solltest du das Plugin verwenden und Videos darüber machen, musst du folgenden Link in der Beschreibung platzieren: `https://github.com/Rene8888/sfmb`. Diesen Link muss jeder Mitspieler in der Beschreibung verlinken! Änderungen am Code (wie in der Lizenz beschrieben) müssen Öffentlich zugänglich sein.
 
 ## Arbeitsumgebung aufsetzen
-Das Projekt wurde soweit es geht mit Gradle automatisiert. Damit du aber die richtigen Dependencies in deinem lokalen Maven Repository hast musst du das BuildTool von SpigotMC ausführen. Nähere Informationen dafür unter:  
-[Bukkit, CraftBukkit & Spigot 1.8 - Server Instructions](http://www.spigotmc.org/threads/bukkit-craftbukkit-spigot-1-8.36598/).  
-
 ### Setup für IntelliJ
 - Workspace erzeugen
 	- Windows: CMD "gradlew.bat idea"
 	- Linux/OSX: Terminal "./gradlew idea"
+- Bukkit Dependencies installieren:
+	- Windows: CMD "gradlew.bat buildBukkit"
+	- Linux/OSX: Terminal "./gradlew buildBukkit"
 - Projekt in IntelliJ öffnen
 - Arbeiten!
 
 Es sind folgende Run Configurations vorhanden:
-- Build Plugin: Erzeugt Plugin Jar und platziert es im lokalen Test Server
-- Start Dev Server: Startet einen lokalen Bukkit Server zum testen
-- Debug Plugin: Der IntelliJ Debugger verbindet sich zum Server. Breakpoint können gesetzt werden, Code HotSwap verfügbar
+- Build Plugin: Erzeugt Plugin Jar und platziert es im lokalen Test Server. Bei Code Änderung kann auch während ein Dev Server läuft das Plugin neu kompiliert und in den `plugins/` Ordner automatisch verschoben werden. Im Spiel kann man mit `/reload` das Plugin neu laden.
+- Start Dev Server: Startet einen lokalen Bukkit Server zum testen. Dieser Testserver kann wenn der Debug Funktion (grüner Käfer neben Play Button) auch Debugt werden! Breakpoints, Code HotSwap ist dann verfügbar!
 
 ### Setup für Eclipse
 TODO
@@ -80,7 +63,7 @@ Auch bitte ich dich, alles gut zu testen und zu dokumentieren! Jetzt kannst du d
 ####Issues
 Solltest du einen Fehler finden, kannst du ihn ganz einfach reporten:
 
-1. Navigiere zur [Issue Page](https://github.com/Rene8888/yt-battle/issues)
+1. Navigiere zur [Issue Page](https://github.com/Rene8888/smfb/issues)
 2. Überprüfe ob das Problem nicht bereits reportet wurde
 3. Erstelle ein neues Problem (`New Issue` Button)
 4. Überlege dir einen sinnvollen Titel
