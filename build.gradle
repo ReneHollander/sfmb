@@ -100,15 +100,20 @@ task createFinalJar(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer'], typ
   into 'final/'
 }
 
-def bukkitBuildDir = file(new File(buildDir, "/bukkit/").getAbsolutePath())
+def bukkitBuildDir = new File("$buildDir/bukkit/")
 
-task buildBukkit(dependsOn: 'downloadBuildTool', type: JavaExec) {
+task buildBukkit(dependsOn: ['cleanBukkitBuild', 'downloadBuildTool'], type: JavaExec) {
   main='-jar'
   args new File(bukkitBuildDir, "BuildTools.jar"), "--rev", project.property("builtoolversion")
   workingDir = bukkitBuildDir
 }
 
 task downloadBuildTool(type: Download) {
+  bukkitBuildDir.mkdirs()
   src project.property("buildtoolurl")
-  dest bukkitBuildDir
+  dest new File(bukkitBuildDir, "BuildTools.jar")
+}
+
+task cleanBukkitBuild() {
+  bukkitBuildDir.deleteDir()
 }
