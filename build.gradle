@@ -1,15 +1,16 @@
-import org.apache.tools.ant.filters.*
+import de.undercouch.gradle.tasks.download.Download
+import org.apache.tools.ant.filters.ReplaceTokens
 
 buildscript {
-  repositories {
-    jcenter()
-  }
+    repositories {
+        jcenter()
+    }
 
-  dependencies {
-    classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
-    classpath group: 'com.github.rodionmoiseev.gradle.plugins', name: 'idea-utils', version: '0.2'
-    classpath 'de.undercouch:gradle-download-task:1.2'
-  }
+    dependencies {
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
+        classpath group: 'com.github.rodionmoiseev.gradle.plugins', name: 'idea-utils', version: '0.2'
+        classpath 'de.undercouch:gradle-download-task:1.2'
+    }
 }
 
 apply plugin: 'java'
@@ -20,23 +21,21 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'idea-utils'
 
-import de.undercouch.gradle.tasks.download.Download
-
 idea {
-  project {
-    ipr {
-      withXml { xmlProvider ->
-        def project = xmlProvider.asNode()
-        def runConfigs = new XmlParser().parse(new File("config/intellij_runconfigs.txt"))
-        project.append(runConfigs)
-      }
+    project {
+        ipr {
+            withXml { xmlProvider ->
+                def project = xmlProvider.asNode()
+                def runConfigs = new XmlParser().parse(new File("config/intellij_runconfigs.txt"))
+                project.append(runConfigs)
+            }
+        }
     }
-  }
 }
 
 repositories {
-  mavenLocal()
-  mavenCentral()
+    mavenLocal()
+    mavenCentral()
 }
 
 group = project.property("group")
@@ -44,76 +43,81 @@ version = project.property("version")
 sourceCompatibility = project.property("sourceversion")
 
 dependencies {
-  compile group: 'org.bukkit', name: 'bukkit', version: project.property("bukkitversion"), {
-    ext {
-      fatJarExclude = true
+    compile group: 'org.bukkit', name: 'bukkit', version: project.property("bukkitversion"), {
+        ext {
+            fatJarExclude = true
+        }
     }
-  }
-  compile group: 'org.bukkit', name: 'craftbukkit', version: project.property("bukkitversion"), {
-    ext {
-      fatJarExclude = true
+    compile group: 'org.bukkit', name: 'craftbukkit', version: project.property("bukkitversion"), {
+        ext {
+            fatJarExclude = true
+        }
     }
-  }
 
-  compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.7'
-  compile group: 'net.sf.trove4j', name: 'trove4j', version: '3.0.3'
-  compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.7'
+    compile group: 'net.sf.trove4j', name: 'trove4j', version: '3.0.3'
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
 }
 
 processResources {
-  filter ReplaceTokens, tokens: [
-    "bukkitversion": project.property("bukkitversion"),
-    "version": project.property("version")
-
-  ]
+    filter ReplaceTokens, tokens: [
+            "bukkitversion": project.property("bukkitversion"),
+            "version"      : project.property("version")
+    ]
 }
+
+clean {
+    delete "final/"
+    delete "bukkit/"
+}
+
+task cleanPlugin() {
+    new File("bukkit/plugins").deleteDir();
+    new File("final/").deleteDir();
+}
+
+task copyPluginToBukkit(dependsOn: ['fatJar'], type: Copy) {
+    from "${buildDir}/libs"
+    into "bukkit/plugins"
+}
+
+task copyPluginToFinal(dependsOn: ['fatJar'], type: Copy) {
+    from "${buildDir}/libs"
+    into "final/"
+}
+
+task installPlugin(dependsOn: ['cleanPlugin', 'fatJar', 'copyPluginToBukkit', 'copyPluginToFinal']) {}
 
 task setupDevServer(type: Copy) {
-  from 'config/serverfiles'
-  into 'bukkit'
+    from 'config/serverfiles'
+    into 'bukkit'
 }
 
-task clearPlugins() {
-  new File("bukkit/plugins").deleteDir();
+task startDevServer(dependsOn: ['installPlugin', 'setupDevServer'], type: JavaExec) {
+    classpath configurations.compile
+    main = "org.bukkit.craftbukkit.Main"
+    workingDir = "bukkit/"
+    standardInput = System.in
 }
 
-task copyPlugin(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer'], type: Copy) {
-  from "${buildDir}/libs"
-  into 'bukkit/plugins'
-}
-
-task startDevServer(dependsOn: copyPlugin, type: JavaExec) {
-  classpath configurations.compile
-  main = "org.bukkit.craftbukkit.Main"
-  workingDir = "bukkit/"
-  standardInput = System.in
-  jvmArgs = [
-    "-Xdebug",
-    "-Xnoagent",
-    "-Djava.compiler=NONE",
-    "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
-  ].toList()
-}
-
-task createFinalJar(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer'], type: Copy) {
-  from "${buildDir}/libs"
-  into 'final/'
-}
+/* -------- START Spigot BuildTools integration -------- */
 
 def bukkitBuildDir = new File("$buildDir/bukkit/")
 
 task buildBukkit(dependsOn: ['cleanBukkitBuild', 'downloadBuildTool'], type: JavaExec) {
-  main='-jar'
-  args new File(bukkitBuildDir, "BuildTools.jar"), "--rev", project.property("builtoolversion")
-  workingDir = bukkitBuildDir
+    main = '-jar'
+    args new File(bukkitBuildDir, "BuildTools.jar").getAbsolutePath(), "--rev", project.property("builtoolversion")
+    workingDir = bukkitBuildDir
 }
 
 task downloadBuildTool(type: Download) {
-  bukkitBuildDir.mkdirs()
-  src project.property("buildtoolurl")
-  dest new File(bukkitBuildDir, "BuildTools.jar")
+    bukkitBuildDir.mkdirs()
+    src project.property("buildtoolurl")
+    dest new File(bukkitBuildDir, "BuildTools.jar")
 }
 
 task cleanBukkitBuild() {
-  bukkitBuildDir.deleteDir()
+    bukkitBuildDir.deleteDir()
 }
+
+/* -------- END Spigot BuildTools integration -------- */

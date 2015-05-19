@@ -1,10 +1,12 @@
 package at.er.ytbattle.util;
 
 import at.er.ytbattle.plugin.BattlePlugin;
-import org.bukkit.*;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.entity.Player;
 
 public class BlockUtils {
 

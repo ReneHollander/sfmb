@@ -1,42 +1,7 @@
 package at.er.ytbattle.plugin;
 
-import gnu.trove.set.hash.TIntHashSet;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Arrays;
-import java.util.HashMap;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.Wool;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-
 import at.er.ytbattle.plugin.command.CommandManager;
-import at.er.ytbattle.plugin.event.BlockBreakListener;
-import at.er.ytbattle.plugin.event.BlockPlaceListener;
-import at.er.ytbattle.plugin.event.EntityDeathListener;
-import at.er.ytbattle.plugin.event.EntityExplodeListener;
-import at.er.ytbattle.plugin.event.InvincibilityListener;
-import at.er.ytbattle.plugin.event.PlayerChatListener;
-import at.er.ytbattle.plugin.event.PlayerDeathListener;
-import at.er.ytbattle.plugin.event.PlayerInteractListener;
-import at.er.ytbattle.plugin.event.PlayerJoinListener;
-import at.er.ytbattle.plugin.event.PlayerMoveListener;
-import at.er.ytbattle.plugin.event.PlayerRespawnListener;
-import at.er.ytbattle.plugin.event.PlayerShearListener;
-import at.er.ytbattle.plugin.event.PrepareItemCraftListener;
+import at.er.ytbattle.plugin.event.*;
 import at.er.ytbattle.plugin.player.BattlePlayer;
 import at.er.ytbattle.plugin.team.Team;
 import at.er.ytbattle.plugin.team.TeamColor;
@@ -46,8 +11,22 @@ import at.er.ytbattle.util.BattleUtils;
 import at.er.ytbattle.util.ConfigurationHelper;
 import at.er.ytbattle.util.PlayerArmor;
 import at.er.ytbattle.util.XStreamUtil;
-
 import com.thoughtworks.xstream.XStream;
+import gnu.trove.set.hash.TIntHashSet;
+import org.bukkit.*;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.Wool;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class BattlePlugin extends JavaPlugin {
 

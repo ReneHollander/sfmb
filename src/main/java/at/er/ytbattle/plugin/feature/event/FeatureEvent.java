@@ -13,9 +13,10 @@ public class FeatureEvent extends Event implements Cancellable {
 
     /**
      * Generic feature event
+     *
      * @param feature feature event is running for
      */
-    protected FeatureEvent(Feature feature){
+    protected FeatureEvent(Feature feature) {
         feature = feature;
     }
 
@@ -34,7 +35,7 @@ public class FeatureEvent extends Event implements Cancellable {
     /**
      * @return the feature involved in this event
      */
-    public Feature getFeature(){
+    public Feature getFeature() {
         return feature;
     }
 

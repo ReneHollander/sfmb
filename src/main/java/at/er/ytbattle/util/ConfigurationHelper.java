@@ -1,10 +1,9 @@
 package at.er.ytbattle.util;
 
-import java.util.ArrayList;
-
+import at.er.ytbattle.plugin.BattlePlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import at.er.ytbattle.plugin.BattlePlugin;
+import java.util.ArrayList;
 
 public class ConfigurationHelper {
 
