@@ -1,22 +1,26 @@
 import org.apache.tools.ant.filters.*
 
 buildscript {
-    repositories {
-        jcenter()
-    }
+  repositories {
+    jcenter()
+  }
 
-    dependencies {
-        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
-        classpath group: 'com.github.rodionmoiseev.gradle.plugins', name: 'idea-utils', version: '0.2'
-    }
+  dependencies {
+    classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
+    classpath group: 'com.github.rodionmoiseev.gradle.plugins', name: 'idea-utils', version: '0.2'
+    classpath 'de.undercouch:gradle-download-task:1.2'
+  }
 }
 
 apply plugin: 'java'
 apply plugin: 'eu.appsatori.fatjar'
+apply plugin: 'de.undercouch.download'
 
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'idea-utils'
+
+import de.undercouch.gradle.tasks.download.Download
 
 idea {
   project {
@@ -64,22 +68,18 @@ processResources {
   ]
 }
 
-task setupDevServer() {
-  copy {
-    from 'config/serverfiles'
-    into 'bukkit'
-  }
+task setupDevServer(type: Copy) {
+  from 'config/serverfiles'
+  into 'bukkit'
 }
 
 task clearPlugins() {
   new File("bukkit/plugins").deleteDir();
 }
 
-task copyPlugin(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer']) {
-  copy {
-    from "${buildDir}/libs"
-    into 'bukkit/plugins'
-  }
+task copyPlugin(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer'], type: Copy) {
+  from "${buildDir}/libs"
+  into 'bukkit/plugins'
 }
 
 task startDevServer(dependsOn: copyPlugin, type: JavaExec) {
@@ -95,9 +95,20 @@ task startDevServer(dependsOn: copyPlugin, type: JavaExec) {
   ].toList()
 }
 
-task createFinalJar(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer']) {
-  copy {
-    from "${buildDir}/libs"
-    into 'final/'
-  }
+task createFinalJar(dependsOn: ['clearPlugins', 'fatJar', 'setupDevServer'], type: Copy) {
+  from "${buildDir}/libs"
+  into 'final/'
+}
+
+def bukkitBuildDir = file(new File(buildDir, "/bukkit/").getAbsolutePath())
+
+task buildBukkit(dependsOn: 'downloadBuildTool', type: JavaExec) {
+  main='-jar'
+  args new File(bukkitBuildDir, "BuildTools.jar"), "--rev", project.property("builtoolversion")
+  workingDir = bukkitBuildDir
+}
+
+task downloadBuildTool(type: Download) {
+  src project.property("buildtoolurl")
+  dest bukkitBuildDir
 }
