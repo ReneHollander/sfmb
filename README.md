@@ -5,6 +5,11 @@ Willkommen beim offiziellen YouTube-Battle Plugin
 **Latest Build**: None Yet
 ## Informationen
 
+### Links:
+[Design Documents](https://docs.google.com/document/d/1UivbiZwdHihjBBHSwgkowtJCUbs2IDMNpZKlatfPSbA/edit?usp=sharing)
+[Taiga Project Management](https://tree.taiga.io/project/sfmb/kanban)
+[Class Diagram](https://creately.com/diagram/i9wyigfa2/RK7ZAHcQTi9pgkC6vLBqqZ8s2Q0%3D)
+
 ### Autoren
 * EXSolo:
 	- Website: [exsoloscript.com](http://exsoloscript.com/)
