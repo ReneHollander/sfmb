@@ -1,9 +1,8 @@
 package at.er.sfmb.plugin.feature;
 
-import at.er.sfmb.plugin.command.CustomCommand;
 import org.bukkit.event.Listener;
 
-public interface Feature extends Listener, CustomCommand {
+public interface Feature extends Listener {
 
     public String getName();
 

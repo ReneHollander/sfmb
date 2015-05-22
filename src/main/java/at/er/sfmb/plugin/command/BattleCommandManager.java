@@ -1,49 +1,15 @@
 package at.er.sfmb.plugin.command;
 
 import at.er.sfmb.plugin.BattlePlugin;
+import at.er.sfmb.plugin.command.manager.AbstractCommandManager;
 import at.er.sfmb.plugin.player.BattlePlayer;
-import com.google.common.base.Preconditions;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
-public class CommandManager implements CommandExecutor {
-
-    private HashMap<String, CustomCommand> commandHandlers;
-
-    public CommandManager() {
-        this.commandHandlers = new HashMap<>();
-
-        // this.addCommandHandler("help", new BattleCommandHelp());
-    }
-
-    public void addCommandHandler(String label, CustomCommand bc) {
-        Preconditions.checkNotNull(label);
-        Preconditions.checkNotNull(bc);
-        if (this.commandHandlers.containsKey(label)) throw new IllegalArgumentException("commandLabel in use");
-        this.commandHandlers.put(label, bc);
-    }
-
-    public void addCommandHandler(String[] labels, CustomCommand bc) {
-        for (String s : labels) {
-            addCommandHandler(s, bc);
-        }
-    }
-
-    public void removeCommandHandler(String label) {
-        Preconditions.checkNotNull(label);
-        this.commandHandlers.remove(label);
-    }
-
-    public void removeCommandHandler(String[] labels) {
-        for (String s : labels) {
-            removeCommandHandler(s);
-        }
-    }
+public class BattleCommandManager extends AbstractCommandManager {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -55,7 +21,7 @@ public class CommandManager implements CommandExecutor {
                     player.sendMessage(BattlePlugin.prefix() + "EXSolo's and Rene8888's Battle Plugin: For a command overview do /battle help");
                 } else {
                     String sublabel = args[0];
-                    CustomCommand abc = this.commandHandlers.get(sublabel);
+                    CustomCommand abc = this.getCommandHandlers().get(sublabel);
                     if (abc != null) {
                         String[] subargs = Arrays.copyOfRange(args, 1, args.length);
                         boolean ret = abc.onCommand(sublabel, subargs, player);

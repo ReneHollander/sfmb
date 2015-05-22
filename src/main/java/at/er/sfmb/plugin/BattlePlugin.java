@@ -1,6 +1,7 @@
 package at.er.sfmb.plugin;
 
-import at.er.sfmb.plugin.command.CommandManager;
+import at.er.sfmb.plugin.command.manager.AbstractCommandManager;
+import at.er.sfmb.plugin.command.BattleCommandManager;
 import at.er.sfmb.plugin.event.FeatureListener;
 import at.er.sfmb.plugin.feature.FeatureLoader;
 import at.er.sfmb.plugin.feature.FeatureManager;
@@ -40,7 +41,7 @@ public class BattlePlugin extends JavaPlugin {
 
     public HashMap<Player, PlayerArmor> playerArmor;
     public TIntHashSet deadPlayersItems;
-    private CommandManager commandManager;
+    private AbstractCommandManager commandManager;
     private FeatureManager featureManager;
 
     public void onEnable() {
@@ -98,7 +99,7 @@ public class BattlePlugin extends JavaPlugin {
     }
 
     public void registerCommands() {
-        this.commandManager = new CommandManager();
+        this.commandManager = new BattleCommandManager();
         getCommand("battle").setExecutor(this.commandManager);
         getCommand("b").setExecutor(this.commandManager);
     }
@@ -270,7 +271,7 @@ public class BattlePlugin extends JavaPlugin {
         Bukkit.reload();
     }
 
-    public CommandManager getCommandManager() {
+    public AbstractCommandManager getCommandManager() {
         return commandManager;
     }
 

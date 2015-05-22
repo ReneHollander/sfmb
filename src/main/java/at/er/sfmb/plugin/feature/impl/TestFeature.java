@@ -1,9 +1,12 @@
 package at.er.sfmb.plugin.feature.impl;
 
+import at.er.sfmb.plugin.command.CommandAnnotation;
 import at.er.sfmb.plugin.feature.AbstractFeature;
-import at.er.sfmb.plugin.player.BattlePlayer;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
+
+import java.util.Arrays;
 
 public class TestFeature extends AbstractFeature {
 
@@ -11,14 +14,9 @@ public class TestFeature extends AbstractFeature {
         super("TestFeature", "This is a TestFeature");
     }
 
-    @Override
-    public boolean onCommand(String label, String[] args, BattlePlayer player) {
-        if (label.equalsIgnoreCase("test")) {
-            player.sendMessage("It works!");
-            return true;
-        }
-
-        return false;
+    @CommandAnnotation(label = "test", args = {String.class}, mapping = {"username"})
+    public void testCommand(CommandSender sender, Object[] args) {
+        sender.sendMessage(Arrays.toString(args));
     }
 
     @Override
