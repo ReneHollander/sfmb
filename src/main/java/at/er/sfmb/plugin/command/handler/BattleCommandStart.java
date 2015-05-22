@@ -1,7 +1,7 @@
 package at.er.sfmb.plugin.command.handler;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.command.BattleCommand;
+import at.er.sfmb.plugin.command.CustomCommand;
 import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.timer.timeables.BattleStartCountdown;
 import at.er.sfmb.util.ConfigurationHelper;
@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
-public class BattleCommandStart implements BattleCommand {
+public class BattleCommandStart implements CustomCommand {
 
     @Override
     public boolean onCommand(String label, String[] args, BattlePlayer player) {

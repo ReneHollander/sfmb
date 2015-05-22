@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class CommandManager implements CommandExecutor {
 
-    private HashMap<String, BattleCommand> commandHandlers;
+    private HashMap<String, CustomCommand> commandHandlers;
 
     public CommandManager() {
         this.commandHandlers = new HashMap<>();
@@ -21,14 +21,14 @@ public class CommandManager implements CommandExecutor {
         // this.addCommandHandler("help", new BattleCommandHelp());
     }
 
-    public void addCommandHandler(String label, BattleCommand bc) {
+    public void addCommandHandler(String label, CustomCommand bc) {
         Preconditions.checkNotNull(label);
         Preconditions.checkNotNull(bc);
         if (this.commandHandlers.containsKey(label)) throw new IllegalArgumentException("commandLabel in use");
         this.commandHandlers.put(label, bc);
     }
 
-    public void addCommandHandler(String[] labels, BattleCommand bc) {
+    public void addCommandHandler(String[] labels, CustomCommand bc) {
         for (String s : labels) {
             addCommandHandler(s, bc);
         }
@@ -55,7 +55,7 @@ public class CommandManager implements CommandExecutor {
                     player.sendMessage(BattlePlugin.prefix() + "EXSolo's and Rene8888's Battle Plugin: For a command overview do /battle help");
                 } else {
                     String sublabel = args[0];
-                    BattleCommand abc = this.commandHandlers.get(sublabel);
+                    CustomCommand abc = this.commandHandlers.get(sublabel);
                     if (abc != null) {
                         String[] subargs = Arrays.copyOfRange(args, 1, args.length);
                         boolean ret = abc.onCommand(sublabel, subargs, player);

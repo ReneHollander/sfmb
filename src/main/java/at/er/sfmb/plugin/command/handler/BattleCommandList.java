@@ -1,12 +1,12 @@
 package at.er.sfmb.plugin.command.handler;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.command.BattleCommand;
+import at.er.sfmb.plugin.command.CustomCommand;
 import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.team.Team;
 import org.bukkit.ChatColor;
 
-public class BattleCommandList implements BattleCommand {
+public class BattleCommandList implements CustomCommand {
 
     @Override
     public boolean onCommand(String label, String[] args, BattlePlayer player) {

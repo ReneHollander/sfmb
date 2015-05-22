@@ -1,14 +1,14 @@
 package at.er.sfmb.plugin.command.handler;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.command.BattleCommand;
+import at.er.sfmb.plugin.command.CustomCommand;
 import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.team.Team;
 import at.er.sfmb.plugin.team.TeamManager;
 import at.er.sfmb.util.BattleUtils;
 import org.bukkit.material.Wool;
 
-public class BattleCommandLife implements BattleCommand {
+public class BattleCommandLife implements CustomCommand {
 
     private TeamManager teamManager;
 

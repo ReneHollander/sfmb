@@ -1,10 +1,10 @@
 package at.er.sfmb.plugin.command.handler;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.command.BattleCommand;
+import at.er.sfmb.plugin.command.CustomCommand;
 import at.er.sfmb.plugin.player.BattlePlayer;
 
-public class BattleCommandHelp implements BattleCommand {
+public class BattleCommandHelp implements CustomCommand {
 
     @Override
     public boolean onCommand(String label, String[] args, BattlePlayer player) {

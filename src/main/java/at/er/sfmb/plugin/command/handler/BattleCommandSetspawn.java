@@ -1,12 +1,12 @@
 package at.er.sfmb.plugin.command.handler;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.command.BattleCommand;
+import at.er.sfmb.plugin.command.CustomCommand;
 import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.util.SerializableLocation;
 import org.bukkit.Location;
 
-public class BattleCommandSetspawn implements BattleCommand {
+public class BattleCommandSetspawn implements CustomCommand {
 
     @Override
     public boolean onCommand(String label, String[] args, BattlePlayer player) {

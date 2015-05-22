@@ -1,13 +1,13 @@
 package at.er.sfmb.plugin.command.handler;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.command.BattleCommand;
+import at.er.sfmb.plugin.command.CustomCommand;
 import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.timer.timeables.BattleResumeCountdown;
 import at.er.sfmb.util.ConfigurationHelper;
 import org.bukkit.Bukkit;
 
-public class BattleCommandResume implements BattleCommand {
+public class BattleCommandResume implements CustomCommand {
 
     @Override
     public boolean onCommand(String label, String[] args, BattlePlayer player) {
