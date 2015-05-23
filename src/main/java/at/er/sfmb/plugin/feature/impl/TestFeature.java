@@ -1,5 +1,6 @@
 package at.er.sfmb.plugin.feature.impl;
 
+import at.er.sfmb.plugin.command.ArgType;
 import at.er.sfmb.plugin.command.CommandAnnotation;
 import at.er.sfmb.plugin.feature.AbstractFeature;
 import org.bukkit.command.CommandSender;
@@ -14,7 +15,7 @@ public class TestFeature extends AbstractFeature {
         super("TestFeature", "This is a TestFeature");
     }
 
-    @CommandAnnotation(label = "test", args = {String.class}, mapping = {"username"})
+    @CommandAnnotation(label = "test", argTypes = {ArgType.STRING}, argNames = {"msg"})
     public void testCommand(CommandSender sender, Object[] args) {
         sender.sendMessage(Arrays.toString(args));
     }

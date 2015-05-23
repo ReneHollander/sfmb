@@ -19,15 +19,15 @@ public class AnnotationBasedCommandManager implements CommandExecutor {
         this.commandMap = new HashMap<>();
     }
 
-    public void register(Class<? extends Listener> clazz) {
-        Method[] methods = getClass().getMethods();
+    public void register(Listener listener) {
+        Method[] methods = listener.getClass().getMethods();
         for (Method method : methods) {
             CommandAnnotation ca = method.getAnnotation(CommandAnnotation.class);
             if (ca != null) {
                 Class<?>[] parameterTypes = method.getParameterTypes();
                 if (parameterTypes.length != 2 || parameterTypes[0] != CommandSender.class || parameterTypes[1] != Object[].class)
                     throw new IllegalArgumentException("method needs parameters CommandSender and Object[]");
-                AnnotatedCommand ac = new AnnotatedCommand(ca.label(), ca.argTypes(), ca.argNames(), method);
+                AnnotatedCommand ac = new AnnotatedCommand(ca.label(), ca.argTypes(), ca.argNames(), listener, method);
                 this.commandMap.put(ca.label(), ac);
             }
         }
@@ -44,7 +44,7 @@ public class AnnotationBasedCommandManager implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (this.hasLabel(s)) {
             AnnotatedCommand ac = this.commandMap.get(s);
-            ac.parse(strings);
+            // TODO ac.parse(strings);
             return true;
         }
         return false;

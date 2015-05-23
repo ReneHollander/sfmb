@@ -17,7 +17,7 @@ public class FeatureListener implements Listener {
     @EventHandler
     public void onFeatureEnable(FeatureEnabledEvent event) {
         Bukkit.getPluginManager().registerEvents(event.getFeature(), BattlePlugin.instance());
-        BattlePlugin.instance().getCommandManager().addCommandHandler(event.getFeature().getCommandLabels(), event.getFeature());
+        // TODO BattlePlugin.instance().getCommandManager().addCommandHandler(event.getFeature().getCommandLabels(), event.getFeature());
     }
 
     @EventHandler

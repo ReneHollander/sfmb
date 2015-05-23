@@ -11,7 +11,7 @@ public @interface CommandAnnotation {
 
     String label();
 
-    AnnotatedCommand.ArgType[] argTypes();
+    ArgType[] argTypes();
 
     String[] argNames();
 
