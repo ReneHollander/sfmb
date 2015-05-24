@@ -63,6 +63,12 @@ public class AnnotatedCommand {
             if (argType.getType() == ArgType.Type.SINGLE) {
                 ArgType.SingleArgTypeParser parser = (ArgType.SingleArgTypeParser) argType.getArgTypeParser();
                 String s = strings[i];
+                Object res = null;
+                try {
+                    res = parser.parse(s);
+                } catch (Exception e) {
+                    throw new ParseException(argName, argType, null, null);
+                }
                 ret.add(parser.parse(s));
             } else if (argType.getType() == ArgType.Type.MULTI) {
                 ArgType.MultiArgTypeParser parser = (ArgType.MultiArgTypeParser) argType.getArgTypeParser();
