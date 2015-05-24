@@ -2,8 +2,6 @@ package at.er.sfmb.plugin.feature;
 
 import at.er.sfmb.plugin.feature.event.FeatureDisableEvent;
 import at.er.sfmb.plugin.feature.event.FeatureEnabledEvent;
-import at.er.sfmb.plugin.player.BattlePlayer;
-import at.er.sfmb.plugin.player.CustomPlayer;
 import org.bukkit.Bukkit;
 
 public abstract class AbstractFeature implements Feature {
@@ -76,9 +74,8 @@ public abstract class AbstractFeature implements Feature {
 
         AbstractFeature that = (AbstractFeature) o;
 
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return !(name != null ? !name.equals(that.name) : that.name != null);
 
-        return true;
     }
 
     @Override

@@ -4,7 +4,6 @@ import at.er.sfmb.plugin.feature.event.FeatureRegisterEvent;
 import at.er.sfmb.plugin.feature.event.FeatureUnregisterEvent;
 import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
-import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Constructor;

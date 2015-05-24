@@ -8,7 +8,6 @@ import at.er.sfmb.util.ConfigurationHelper;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -33,8 +32,8 @@ public class BlockPlaceListener implements Listener {
             DyeColor color = ((Wool) event.getBlock().getState().getData()).getColor();
             Team t = BattlePlugin.game().getTeamManager().getTeamByPlayer(player);
             if (t.getTeamColor().getDyeColor().equals(color)) {
-                boolean placed = this.placeWool(player, event.getBlock().getLocation(), color);
-                if (placed == false) {
+                boolean placed = this.placeWool(event.getBlock().getLocation());
+                if (!placed) {
                     player.sendMessage(BattlePlugin.prefix() + "Invalid Wool Location!");
                     event.setCancelled(true);
                 } else {
@@ -57,7 +56,7 @@ public class BlockPlaceListener implements Listener {
         }
     }
 
-    private boolean placeWool(Player p, Location l, DyeColor color) {
+    private boolean placeWool(Location l) {
 
         int minHeight = BattlePlugin.configurationHelper().getConfigFile().getInt(ConfigurationHelper.GAME_WOOL_MINPLACEHEIGHT_PATH);
 
@@ -109,7 +108,7 @@ public class BlockPlaceListener implements Listener {
             }
         }
 
-        Location tmp = l;
+        Location tmp = l.clone();
 
         tmp.setZ(tmp.getZ() - 2);
         tmp.setX(tmp.getX() - 2);

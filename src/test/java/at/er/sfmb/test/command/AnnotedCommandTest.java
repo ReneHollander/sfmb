@@ -30,7 +30,7 @@ public class AnnotedCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testMultiArgWrongPosition() throws NoSuchMethodException {
         TestListener tl = new TestListener();
-        AnnotatedCommand ac = new AnnotatedCommand("test", new ArgType[]{ArgType.INTEGER, ArgType.MULTI_STRING, ArgType.INTEGER}, new String[]{"time", "text", "i am a integer"}, tl, tl.method());
+        new AnnotatedCommand("test", new ArgType[]{ArgType.INTEGER, ArgType.MULTI_STRING, ArgType.INTEGER}, new String[]{"time", "text", "i am a integer"}, tl, tl.method());
     }
 
     @Test
@@ -59,13 +59,13 @@ public class AnnotedCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidArgTypeMapping() throws NoSuchMethodException, AnnotatedCommand.ParseException {
         TestListener tl = new TestListener();
-        AnnotatedCommand ac = new AnnotatedCommand("test", new ArgType[]{ArgType.INTEGER, ArgType.DOUBLE}, new String[]{"test"}, tl, tl.method());
+        new AnnotatedCommand("test", new ArgType[]{ArgType.INTEGER, ArgType.DOUBLE}, new String[]{"test"}, tl, tl.method());
     }
 
     public class TestListener implements Listener {
         public void testMethod(CommandSender sender, Object[] args) {
             Assert.assertEquals(sender, null);
-            Assert.assertEquals(args, new Object[]{"this is a test string"});
+            Assert.assertArrayEquals(args, new Object[]{"this is a test string"});
         }
 
         public Method method() throws NoSuchMethodException {

@@ -2,14 +2,15 @@ package at.er.sfmb.util.timer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TimerManager {
 
-    private HashMap<Object, HashMap<Object, Timeable>> timers;
+    private Map<Object, HashMap<Object, Timeable>> timers;
 
     public TimerManager() {
-        this.timers = new HashMap<Object, HashMap<Object, Timeable>>();
+        this.timers = new HashMap<>();
     }
 
     public void registerTimer(Timeable timer) {
@@ -56,8 +57,8 @@ public class TimerManager {
         return longestRunning;
     }
 
-    public ArrayList<Timeable> getAllTimers() {
-        ArrayList<Timeable> timerlist = new ArrayList<Timeable>();
+    public List<Timeable> getAllTimers() {
+        List<Timeable> timerlist = new ArrayList<>();
         for (Map.Entry<Object, HashMap<Object, Timeable>> entry1 : this.timers.entrySet()) {
             for (Map.Entry<Object, Timeable> entry2 : entry1.getValue().entrySet()) {
                 timerlist.add(entry2.getValue());
@@ -74,8 +75,8 @@ public class TimerManager {
         return this.timers.get(managerIdentifier);
     }
 
-    public ArrayList<Timeable> getTimersAsList(Object managerIdentifier) {
-        ArrayList<Timeable> timerlist = new ArrayList<Timeable>();
+    public List<Timeable> getTimersAsList(Object managerIdentifier) {
+        List<Timeable> timerlist = new ArrayList<>();
         HashMap<Object, Timeable> hs = this.timers.get(managerIdentifier);
         if (hs == null) {
             this.timers.put(managerIdentifier, new HashMap<Object, Timeable>());

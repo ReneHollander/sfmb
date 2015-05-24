@@ -4,6 +4,7 @@ import at.er.sfmb.plugin.BattlePlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigurationHelper {
 
@@ -42,7 +43,7 @@ public class ConfigurationHelper {
         this.configFile.addDefault(GAME_INVINCIBILITY_LOSEONITEMPICKUP, true);
 
         this.configFile.addDefault(GAME_BASEBLOCK_ENABLED_PATH, true);
-        ArrayList<String> defaultChestContent = new ArrayList<String>();
+        List<String> defaultChestContent = new ArrayList<>();
         defaultChestContent.add("392:16");
         defaultChestContent.add("272");
         defaultChestContent.add("273");

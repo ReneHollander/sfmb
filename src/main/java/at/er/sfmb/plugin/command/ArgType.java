@@ -59,11 +59,11 @@ public enum ArgType {
     }
 
     public interface SingleArgTypeParser<T> extends ArgTypeParser {
-        public T parse(String input) throws InvalidTypeException;
+        T parse(String input) throws InvalidTypeException;
     }
 
     public interface MultiArgTypeParser<T> extends ArgTypeParser {
-        public T parse(String[] input) throws InvalidTypeException;
+        T parse(String[] input) throws InvalidTypeException;
     }
 
     public static class InvalidTypeException extends IllegalArgumentException {
@@ -81,7 +81,7 @@ public enum ArgType {
     }
 
     public enum Type {
-        SINGLE, MULTI;
+        SINGLE, MULTI
     }
 
 }

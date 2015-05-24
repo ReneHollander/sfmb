@@ -1,7 +1,7 @@
 package at.er.sfmb.plugin;
 
-import at.er.sfmb.plugin.command.manager.AbstractCommandManager;
 import at.er.sfmb.plugin.command.BattleCommandManager;
+import at.er.sfmb.plugin.command.manager.AbstractCommandManager;
 import at.er.sfmb.plugin.event.FeatureListener;
 import at.er.sfmb.plugin.feature.FeatureLoader;
 import at.er.sfmb.plugin.feature.FeatureManager;
@@ -28,7 +28,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class BattlePlugin extends JavaPlugin {
@@ -109,7 +109,7 @@ public class BattlePlugin extends JavaPlugin {
         ItemStack tear = new ItemStack(Material.GHAST_TEAR, 1);
         ItemMeta tearMeta = tear.getItemMeta();
         tearMeta.setDisplayName(ChatColor.GOLD + "Live Exchanger");
-        tearMeta.setLore(Arrays.asList("Right Click Me"));
+        tearMeta.setLore(Collections.singletonList("Right Click Me"));
         tear.setItemMeta(tearMeta);
 
         for (TeamColor tc1 : TeamColor.values()) {
@@ -138,7 +138,7 @@ public class BattlePlugin extends JavaPlugin {
     }
 
     private static Game loadGame(File saveFile) {
-        Game game = null;
+        Game game;
         if (saveFile.exists()) {
             XStream xstream = XStreamUtil.createXStream();
             try {
@@ -196,7 +196,7 @@ public class BattlePlugin extends JavaPlugin {
             ItemStack base = new ItemStack(Material.QUARTZ_ORE);
             ItemMeta baseMeta = base.getItemMeta();
             baseMeta.setDisplayName(ChatColor.GRAY + "Base Block");
-            baseMeta.setLore(Arrays.asList("Place me to create a base"));
+            baseMeta.setLore(Collections.singletonList("Place me to create a base"));
             base.setItemMeta(baseMeta);
 
             for (Team t : BattlePlugin.game().getTeamManager().getTeams()) {

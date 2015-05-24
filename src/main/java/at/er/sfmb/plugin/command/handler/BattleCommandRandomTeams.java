@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BattleCommandRandomTeams implements CustomCommand {
@@ -16,7 +17,7 @@ public class BattleCommandRandomTeams implements CustomCommand {
     @Override
     public boolean onCommand(String label, String[] args, BattlePlayer bp) {
         if (!BattlePlugin.game().isStarted()) {
-            ArrayList<Team> teams = BattlePlugin.game().getTeamManager().getTeams();
+            List<Team> teams = BattlePlugin.game().getTeamManager().getTeams();
             Random r = new Random();
             for (BattlePlayer player : BattlePlugin.game().getBattlePlayerManager().getAllBattlePlayers()) {
                 Team t = teams.get(r.nextInt(teams.size()));

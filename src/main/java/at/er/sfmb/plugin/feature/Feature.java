@@ -4,15 +4,15 @@ import org.bukkit.event.Listener;
 
 public interface Feature extends Listener {
 
-    public String getName();
+    String getName();
 
-    public String getDescription();
+    String getDescription();
 
-    public void enable();
+    void enable();
 
-    public void disable();
+    void disable();
 
-    public boolean isEnabled();
+    boolean isEnabled();
 
-    public String[] getCommandLabels();
+    String[] getCommandLabels();
 }

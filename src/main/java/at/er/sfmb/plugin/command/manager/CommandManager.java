@@ -7,13 +7,13 @@ import java.util.Map;
 
 public interface CommandManager extends CommandExecutor {
 
-    public void addCommandHandler(String label, CustomCommand bc);
+    void addCommandHandler(String label, CustomCommand bc);
 
-    public void addCommandHandler(String[] labels, CustomCommand bc);
+    void addCommandHandler(String[] labels, CustomCommand bc);
 
-    public void removeCommandHandler(String label);
+    void removeCommandHandler(String label);
 
-    public void removeCommandHandler(String[] labels);
+    void removeCommandHandler(String[] labels);
 
-    public Map<String, CustomCommand> getCommandHandlers();
+    Map<String, CustomCommand> getCommandHandlers();
 }

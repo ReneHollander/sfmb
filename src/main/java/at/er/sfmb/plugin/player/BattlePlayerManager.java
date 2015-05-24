@@ -17,7 +17,7 @@ public class BattlePlayerManager implements Listener {
     private Map<UUID, BattlePlayer> players;
 
     public BattlePlayerManager() {
-        this.players = new HashMap<UUID, BattlePlayer>();
+        this.players = new HashMap<>();
 
         BattlePlugin.instance().getServer().getPluginManager().registerEvents(this, BattlePlugin.instance());
 
@@ -43,7 +43,7 @@ public class BattlePlayerManager implements Listener {
     }
 
     public List<BattlePlayer> getAllBattlePlayers() {
-        return new ArrayList<BattlePlayer>(this.players.values());
+        return new ArrayList<>(this.players.values());
     }
 
     public int getBattlePlayerCount() {

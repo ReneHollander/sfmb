@@ -4,18 +4,19 @@ import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.timer.manager.WoolPlaceTimerManager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
 
     private TeamColor teamColor;
-    private ArrayList<BattlePlayer> players;
+    private List<BattlePlayer> players;
     private int lifes;
     private boolean lost;
     private WoolPlaceTimerManager bptm;
 
     public Team(TeamColor teamColor) {
         this.teamColor = teamColor;
-        this.players = new ArrayList<BattlePlayer>();
+        this.players = new ArrayList<>();
         this.lifes = 0;
         this.lost = false;
 
@@ -26,7 +27,7 @@ public class Team {
         return this.teamColor;
     }
 
-    public ArrayList<BattlePlayer> getPlayers() {
+    public List<BattlePlayer> getPlayers() {
         return players;
     }
 

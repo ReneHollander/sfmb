@@ -69,7 +69,7 @@ public class AnnotatedCommand {
                 } catch (Exception e) {
                     throw new ParseException(argName, argType, null, null);
                 }
-                ret.add(parser.parse(s));
+                ret.add(res);
             } else if (argType.getType() == ArgType.Type.MULTI) {
                 ArgType.MultiArgTypeParser parser = (ArgType.MultiArgTypeParser) argType.getArgTypeParser();
                 String[] data = Arrays.copyOfRange(strings, i, strings.length);
@@ -79,7 +79,7 @@ public class AnnotatedCommand {
                 } catch (Exception e) {
                     throw new ParseException(argName, argType, null, null);
                 }
-                ret.add(parser.parse(data));
+                ret.add(res);
             } else {
                 throw new IllegalStateException("Invalid ArgType Type");
             }

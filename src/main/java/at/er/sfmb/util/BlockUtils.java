@@ -62,7 +62,7 @@ public class BlockUtils {
             }
         }
 
-        Location tmp = l;
+        Location tmp = l.clone();
 
         tmp.setZ(tmp.getZ() - 2);
         tmp.setX(tmp.getX() - 2);

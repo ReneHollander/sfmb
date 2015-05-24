@@ -15,15 +15,16 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Wool;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerMoveListener implements Listener {
 
     private static final int CHECK_INVENTORY_MIN_DIFF_MS = 250;
 
-    private HashMap<BattlePlayer, LongWrapper> lastMoveMap;
+    private Map<BattlePlayer, LongWrapper> lastMoveMap;
 
     public PlayerMoveListener() {
-        this.lastMoveMap = new HashMap<BattlePlayer, LongWrapper>();
+        this.lastMoveMap = new HashMap<>();
 
         Bukkit.getPluginManager().registerEvents(this, BattlePlugin.instance());
     }

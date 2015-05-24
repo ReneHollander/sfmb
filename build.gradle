@@ -108,7 +108,7 @@ def bukkitBuildDir = new File("$buildDir/bukkit/")
 
 task buildBukkit(dependsOn: ['cleanBukkitBuild', 'downloadBuildTool'], type: JavaExec) {
     main = '-jar'
-    args new File(bukkitBuildDir, "BuildTools.jar").getAbsolutePath(), "--rev", project.property("builtoolversion")
+    args new File(bukkitBuildDir, "BuildTools.jar").getAbsolutePath(), "--rev", project.property("builtoolversion").toString()
     workingDir = bukkitBuildDir
 }
 
