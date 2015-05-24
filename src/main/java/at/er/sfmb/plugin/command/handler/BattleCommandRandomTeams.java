@@ -8,7 +8,6 @@ import at.er.sfmb.util.BattleUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
