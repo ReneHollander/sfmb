@@ -41,12 +41,25 @@ public class AnnotedCommandTest {
         Assert.assertArrayEquals(args, new Object[]{"this is a test string"});
     }
 
+    @Test(expected = AnnotatedCommand.ParseException.class)
+    public void testParseError() throws AnnotatedCommand.ParseException, NoSuchMethodException {
+        TestListener tl = new TestListener();
+        AnnotatedCommand ac = new AnnotatedCommand("int", new ArgType[]{ArgType.INTEGER}, new String[]{"test"}, tl, tl.method());
+        ac.parse(new String[]{"this is not an int"});
+    }
+
     @Test
     public void testExecute() throws NoSuchMethodException, AnnotatedCommand.ParseException {
         TestListener tl = new TestListener();
         AnnotatedCommand ac = new AnnotatedCommand("test", new ArgType[]{ArgType.MULTI_STRING}, new String[]{"test"}, tl, tl.method());
         Object[] args = ac.parse(new String[]{"this", "is", "a", "test", "string"});
         ac.execute(null, args);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidArgTypeMapping() throws NoSuchMethodException, AnnotatedCommand.ParseException {
+        TestListener tl = new TestListener();
+        AnnotatedCommand ac = new AnnotatedCommand("test", new ArgType[]{ArgType.INTEGER, ArgType.DOUBLE}, new String[]{"test"}, tl, tl.method());
     }
 
     public class TestListener implements Listener {

@@ -33,6 +33,12 @@ public class ArgTypeTest {
         Assert.assertEquals(parser.parse("5"), 5);
     }
 
+    @Test(expected = ArgType.InvalidTypeException.class)
+    public void testArgTypeIntegerParserWrongValue() {
+        ArgType.SingleArgTypeParser parser = (ArgType.SingleArgTypeParser) ArgType.INTEGER.getArgTypeParser();
+        parser.parse("abc");
+    }
+
     @Test
     public void testArgTypeDoubleGetType() {
         Assert.assertEquals(ArgType.DOUBLE.getType(), ArgType.Type.SINGLE);
@@ -42,6 +48,12 @@ public class ArgTypeTest {
     public void testArgTypeDoubleParser() {
         ArgType.SingleArgTypeParser parser = (ArgType.SingleArgTypeParser) ArgType.DOUBLE.getArgTypeParser();
         Assert.assertEquals(parser.parse("5.0"), 5D);
+    }
+
+    @Test(expected = ArgType.InvalidTypeException.class)
+    public void testArgTypeDoubleParserWrongValue() {
+        ArgType.SingleArgTypeParser parser = (ArgType.SingleArgTypeParser) ArgType.DOUBLE.getArgTypeParser();
+        parser.parse("abc");
     }
 
     @Test
