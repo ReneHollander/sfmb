@@ -77,42 +77,49 @@ clean {
     delete "bukkit/"
 }
 
-task cleanPlugin() {
-    new File("bukkit/plugins").deleteDir();
-    new File("final/").deleteDir();
-}
-
-task copyPluginToBukkit(dependsOn: ['fatJar'], type: Copy) {
-    from "${buildDir}/libs"
-    into "bukkit/plugins"
-}
-
-task copyPluginToFinal(dependsOn: ['fatJar'], type: Copy) {
+task deploy(type: Copy, dependsOn: ['build']) {
     from "${buildDir}/libs"
     into "final/"
 }
-
-task installPlugin(dependsOn: ['cleanPlugin', 'fatJar', 'copyPluginToBukkit', 'copyPluginToFinal']) {}
 
 task setupDevServer(type: Copy) {
     from 'config/serverfiles'
     into 'bukkit'
 }
 
-task startDevServer(dependsOn: ['installPlugin', 'setupDevServer'], type: JavaExec) {
+task cleanBukkitPlugins() {
+    delete "bukkit/plugins"
+}
+
+task copyPluginToBukkit(dependsOn: ['build'], type: Copy) {
+    from "${buildDir}/libs"
+    into "bukkit/plugins"
+}
+
+task startDevServer(dependsOn: ['cleanBukkitPlugins', 'copyPluginToBukkit', 'setupDevServer'], type: JavaExec) {
     classpath configurations.compile
     main = "org.bukkit.craftbukkit.Main"
     workingDir = "bukkit/"
     standardInput = System.in
 }
 
-/* -------- START Spigot BuildTools integration -------- */
+tasks.compileJava.dependsOn 'buildBukkit'
+
+jar {
+    actions = []
+    dependsOn = []
+    dependsOn('fatJar')
+}
 
 def bukkitBuildDir = new File("$buildDir/bukkit/")
 
-task buildBukkit(dependsOn: ['cleanBukkitBuild', 'downloadBuildTool'], type: JavaExec) {
+task buildBukkit(dependsOn: ['downloadBuildTool'], type: JavaExec) {
+    if (hasBukkit()) {
+        enabled = false;
+        dependsOn = [];
+    }
     main = '-jar'
-    args new File(bukkitBuildDir, "BuildTools.jar").getAbsolutePath(), "--rev", project.property("builtoolversion").toString()
+    args new File(bukkitBuildDir, "BuildTools.jar").getAbsolutePath(), "--rev", project.property("builtoolversion")
     workingDir = bukkitBuildDir
 }
 
@@ -126,4 +133,14 @@ task cleanBukkitBuild() {
     bukkitBuildDir.deleteDir()
 }
 
-/* -------- END Spigot BuildTools integration -------- */
+def hasBukkit() {
+    def bukkitGroupId = "org.bukkit"
+    def bukkitVersion = project.property("bukkitversion")
+    return hasArtifact(bukkitGroupId, "bukkit", bukkitVersion) && hasArtifact(bukkitGroupId, "craftbukkit", bukkitVersion)
+}
+
+def hasArtifact(groupId, artifactId, version) {
+    def localMavenRepo = new File(new File(ant.properties['user.home'] as String), ".m2/repository/")
+    def file = new File(localMavenRepo, groupId.replace('.', '/') + "/" + artifactId + "/" + version + "/")
+    return file.exists()
+}

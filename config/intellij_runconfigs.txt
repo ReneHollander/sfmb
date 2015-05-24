@@ -28,7 +28,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="installPlugin" />
+          <option value="copyPluginToBukkit" />
         </list>
       </option>
       <option name="vmOptions" value="" />
