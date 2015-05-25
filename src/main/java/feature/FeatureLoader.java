@@ -1,4 +1,4 @@
-package at.er.sfmb.plugin.feature;
+package feature;
 
 import com.google.common.reflect.ClassPath;
 

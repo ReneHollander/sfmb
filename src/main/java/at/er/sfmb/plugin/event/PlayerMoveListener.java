@@ -31,7 +31,7 @@ public class PlayerMoveListener implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getPlayer());
+        BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getPlayer());
 
         if (BattlePlugin.game().isStarted()) {
             if (BattlePlugin.game().getTeamManager().isInTeam(player)) {

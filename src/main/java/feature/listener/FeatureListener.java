@@ -1,8 +1,8 @@
-package at.er.sfmb.plugin.event;
+package feature.listener;
 
 import at.er.sfmb.plugin.BattlePlugin;
-import at.er.sfmb.plugin.feature.event.FeatureDisableEvent;
-import at.er.sfmb.plugin.feature.event.FeatureEnabledEvent;
+import feature.event.FeatureDisableEvent;
+import feature.event.FeatureEnabledEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;

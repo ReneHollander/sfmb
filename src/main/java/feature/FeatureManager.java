@@ -1,7 +1,7 @@
-package at.er.sfmb.plugin.feature;
+package feature;
 
-import at.er.sfmb.plugin.feature.event.FeatureRegisterEvent;
-import at.er.sfmb.plugin.feature.event.FeatureUnregisterEvent;
+import feature.event.FeatureRegisterEvent;
+import feature.event.FeatureUnregisterEvent;
 import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;

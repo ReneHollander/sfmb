@@ -24,7 +24,7 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerDeath(PlayerDeathEvent event) {
-        BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getEntity());
+        BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getEntity());
 
         if (BattlePlugin.game().isStarted() && BattlePlugin.game().getTeamManager().isInTeam(player)) {
             Team t = BattlePlugin.game().getTeamManager().getTeamByPlayer(player);
@@ -85,7 +85,7 @@ public class PlayerDeathListener implements Listener {
             Team lastTeam = BattlePlugin.game().getTeamManager().getLastTeam();
             if (lastTeam != null) {
                 Bukkit.broadcastMessage(BattlePlugin.prefix() + "Team " + lastTeam.getTeamColor().getLongName() + " has won the Battle!");
-                for (BattlePlayer p : BattlePlugin.game().getBattlePlayerManager().getAllBattlePlayers()) {
+                for (BattlePlayer p : BattlePlugin.game().getPlayerManager().getPlayers()) {
                     p.teleport(BattlePlugin.game().getSpawn().getLocation());
                     p.setAllowFlight(true);
                     p.setFlying(true);

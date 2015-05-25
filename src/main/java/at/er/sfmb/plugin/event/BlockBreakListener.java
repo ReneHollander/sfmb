@@ -21,7 +21,7 @@ public class BlockBreakListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onBlockBreak(BlockBreakEvent event) {
-        BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getPlayer());
+        BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getPlayer());
         if (event.getBlock().getType() == Material.WOOL && BattlePlugin.game().isStarted() && BattlePlugin.game().getTeamManager().isInTeam(player)) {
             DyeColor color = ((Wool) event.getBlock().getState().getData()).getColor();
             Team t = BattlePlugin.game().getTeamManager().getTeamByPlayer(player);

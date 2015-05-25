@@ -15,7 +15,7 @@ public class BattleCommandManager extends AbstractCommandManager {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (label.equalsIgnoreCase("battle") || label.equalsIgnoreCase("b")) {
             if (sender instanceof Player) {
-                BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer((Player) sender);
+                BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer((Player) sender);
 
                 if (args.length == 0) {
                     player.sendMessage(BattlePlugin.prefix() + "EXSolo's and Rene8888's Battle Plugin: For a command overview do /battle help");

@@ -1,6 +1,6 @@
-package at.er.sfmb.plugin.feature.event;
+package feature.event;
 
-import at.er.sfmb.plugin.feature.Feature;
+import feature.Feature;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

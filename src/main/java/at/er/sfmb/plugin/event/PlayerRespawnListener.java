@@ -23,7 +23,7 @@ public class PlayerRespawnListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerRespawn(PlayerRespawnEvent event) {
-        BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getPlayer());
+        BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getPlayer());
 
         if (BattlePlugin.game().isStarted() && BattlePlugin.game().getTeamManager().isInTeam(player)) {
             Team t = BattlePlugin.game().getTeamManager().getTeamByPlayer(player);

@@ -1,7 +1,7 @@
-package at.er.sfmb.plugin.feature;
+package feature;
 
-import at.er.sfmb.plugin.feature.event.FeatureDisableEvent;
-import at.er.sfmb.plugin.feature.event.FeatureEnabledEvent;
+import feature.event.FeatureDisableEvent;
+import feature.event.FeatureEnabledEvent;
 import org.bukkit.Bukkit;
 
 public abstract class AbstractFeature implements Feature {

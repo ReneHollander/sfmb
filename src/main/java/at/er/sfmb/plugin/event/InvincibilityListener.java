@@ -47,7 +47,7 @@ public class InvincibilityListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onItemPickup(PlayerPickupItemEvent event) {
         if (BattlePlugin.configurationHelper().getConfigFile().getBoolean(ConfigurationHelper.GAME_INVINCIBILITY_LOSEONITEMPICKUP)) {
-            BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getPlayer());
+            BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getPlayer());
             InvincibilityTimer invincibilityTimer = BattlePlugin.game().getInvincibilityTimerManager().getTimerByPlayer(player);
             ItemStack itemStack = event.getItem().getItemStack();
             if (BattlePlugin.instance().deadPlayersItems.contains(itemStack.hashCode()) && invincibilityTimer != null) {
@@ -60,7 +60,7 @@ public class InvincibilityListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerDeath(PlayerDeathEvent event) {
-        BattlePlayer victim = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getEntity());
+        BattlePlayer victim = BattlePlugin.game().getPlayerManager().getPlayer(event.getEntity());
         InvincibilityTimer victimTimer = BattlePlugin.game().getInvincibilityTimerManager().getTimerByPlayer(victim);
         if (victimTimer != null) {
             victimTimer.removeTimer();
@@ -76,8 +76,8 @@ public class InvincibilityListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDamage(EntityDamageByEntityEvent event) {
         if ((event.getEntity() instanceof Player) && (event.getDamager() instanceof Player)) {
-            BattlePlayer victim = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer((Player) event.getEntity());
-            BattlePlayer damager = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer((Player) event.getDamager());
+            BattlePlayer victim = BattlePlugin.game().getPlayerManager().getPlayer((Player) event.getEntity());
+            BattlePlayer damager = BattlePlugin.game().getPlayerManager().getPlayer((Player) event.getDamager());
             InvincibilityTimer victimTimer = BattlePlugin.game().getInvincibilityTimerManager().getTimerByPlayer(victim);
             InvincibilityTimer damagerTimer = BattlePlugin.game().getInvincibilityTimerManager().getTimerByPlayer(damager);
 
@@ -94,8 +94,8 @@ public class InvincibilityListener implements Listener {
         } else if ((event.getDamager() instanceof Projectile) && (event.getEntity() instanceof Player)) {
             Projectile projectile = (Projectile) event.getDamager();
             if (projectile.getShooter() instanceof Player) {
-                BattlePlayer victim = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer((Player) event.getEntity());
-                BattlePlayer damager = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer((Player) projectile.getShooter());
+                BattlePlayer victim = BattlePlugin.game().getPlayerManager().getPlayer((Player) event.getEntity());
+                BattlePlayer damager = BattlePlugin.game().getPlayerManager().getPlayer((Player) projectile.getShooter());
                 InvincibilityTimer victimTimer = BattlePlugin.game().getInvincibilityTimerManager().getTimerByPlayer(victim);
                 InvincibilityTimer damagerTimer = BattlePlugin.game().getInvincibilityTimerManager().getTimerByPlayer(damager);
 

@@ -1,11 +1,8 @@
 package at.er.sfmb.plugin.feature.impl;
 
-import at.er.sfmb.plugin.feature.AbstractFeature;
-import org.bukkit.command.CommandSender;
+import feature.AbstractFeature;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
-
-import java.util.Arrays;
 
 public class TestFeature extends AbstractFeature {
 

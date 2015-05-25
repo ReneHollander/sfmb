@@ -62,7 +62,7 @@ public class BattleUtils {
     }
 
     public static void setTags() {
-        for (BattlePlayer player : BattlePlugin.game().getBattlePlayerManager().getAllBattlePlayers()) {
+        for (BattlePlayer player : BattlePlugin.game().getPlayerManager().getPlayers()) {
             setDisplayAndListName(player);
         }
     }

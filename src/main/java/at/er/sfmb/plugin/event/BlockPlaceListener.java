@@ -23,7 +23,7 @@ public class BlockPlaceListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onBlockPlace(BlockPlaceEvent event) {
-        BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getPlayer());
+        BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getPlayer());
         if (event.getBlock().getType() == Material.GLASS && player.getWorld() == BattlePlugin.game().getSpawn().getLocation().getWorld() && BattlePlugin.game().isStarted()) {
             event.setCancelled(true);
             player.sendMessage(BattlePlugin.prefix() + "You are unable to place a Block of the Bordermaterial.");

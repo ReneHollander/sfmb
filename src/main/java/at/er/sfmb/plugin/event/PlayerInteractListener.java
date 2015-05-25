@@ -22,7 +22,7 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerInteract(PlayerInteractEvent event) {
-        BattlePlayer player = BattlePlugin.game().getBattlePlayerManager().getBattlePlayer(event.getPlayer());
+        BattlePlayer player = BattlePlugin.game().getPlayerManager().getPlayer(event.getPlayer());
         if ((event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) && player.getItemInHand().getType() == Material.GHAST_TEAR && BattlePlugin.game().isStarted()) {
             if (!BattlePlugin.game().getTeamManager().isInTeam(player)) {
                 player.sendMessage(BattlePlugin.prefix() + "You left the battle, this item is worthless now!");

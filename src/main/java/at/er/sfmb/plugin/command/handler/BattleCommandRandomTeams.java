@@ -18,7 +18,7 @@ public class BattleCommandRandomTeams implements CustomCommand {
         if (!BattlePlugin.game().isStarted()) {
             List<Team> teams = BattlePlugin.game().getTeamManager().getTeams();
             Random r = new Random();
-            for (BattlePlayer player : BattlePlugin.game().getBattlePlayerManager().getAllBattlePlayers()) {
+            for (BattlePlayer player : BattlePlugin.game().getPlayerManager().getPlayers()) {
                 Team t = teams.get(r.nextInt(teams.size()));
                 BattlePlugin.game().getTeamManager().removePlayerFromTeam(player);
                 t.addPlayer(player);

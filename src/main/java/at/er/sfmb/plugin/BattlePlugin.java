@@ -2,9 +2,9 @@ package at.er.sfmb.plugin;
 
 import at.er.sfmb.plugin.command.BattleCommandManager;
 import at.er.sfmb.plugin.command.manager.AbstractCommandManager;
-import at.er.sfmb.plugin.event.FeatureListener;
-import at.er.sfmb.plugin.feature.FeatureLoader;
-import at.er.sfmb.plugin.feature.FeatureManager;
+import feature.listener.FeatureListener;
+import feature.FeatureLoader;
+import feature.FeatureManager;
 import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.team.Team;
 import at.er.sfmb.plugin.team.TeamColor;

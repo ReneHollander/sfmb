@@ -1,4 +1,4 @@
-package at.er.sfmb.plugin.player;
+package feature.player;
 
 import org.bukkit.entity.Player;
 

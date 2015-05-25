@@ -1,14 +1,15 @@
 package at.er.sfmb.plugin;
 
-import at.er.sfmb.plugin.player.BattlePlayerManager;
+import at.er.sfmb.plugin.player.BattlePlayer;
 import at.er.sfmb.plugin.team.TeamManager;
 import at.er.sfmb.plugin.timer.manager.InvincibilityTimerManager;
 import at.er.sfmb.util.SerializableLocation;
 import at.er.sfmb.util.timer.TimerManager;
+import feature.player.PlayerManager;
 
 public class Game {
 
-    private BattlePlayerManager battlePlayerManager;
+    private PlayerManager<BattlePlayer> battlePlayerManager;
     private TeamManager teamManager;
 
     private TimerManager timerManager;
@@ -24,7 +25,7 @@ public class Game {
         this.started = false;
         this.paused = false;
 
-        this.battlePlayerManager = new BattlePlayerManager();
+        this.battlePlayerManager = new PlayerManager<BattlePlayer>(BattlePlayer.class);
         this.teamManager = new TeamManager();
 
         this.timerManager = new TimerManager();
@@ -35,7 +36,7 @@ public class Game {
         return this.timerManager;
     }
 
-    public BattlePlayerManager getBattlePlayerManager() {
+    public PlayerManager<BattlePlayer> getPlayerManager() {
         return this.battlePlayerManager;
     }
 
