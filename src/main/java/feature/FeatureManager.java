@@ -1,8 +1,8 @@
 package feature;
 
+import com.google.common.base.Preconditions;
 import feature.event.FeatureRegisterEvent;
 import feature.event.FeatureUnregisterEvent;
-import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
