@@ -923,6 +923,11 @@ public class CustomPlayer implements Player {
     }
 
     @Override
+    public void setSpectatorTarget(Entity entity) {
+        this.getPlayer().setSpectatorTarget(entity);
+    }
+
+    @Override
     public int getLevel() {
         return this.getPlayer().getLevel();
     }
